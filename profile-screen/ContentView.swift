@@ -8,14 +8,63 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @ViewBuilder
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            ZStack {
+                Image("Wallpaper")
+                    .resizable()
+                    .scaledToFit()
+                
+                Image("Happy_Smile")
+                    .resizable()
+                    .scaledToFill()
+                    .clipShape(Circle())
+                    .padding(.top, 150)
+                    .frame(width: 200, height: 200)
+            }
+            .padding(.bottom, 20)
+            
+            VStack(alignment: .leading) {
+                Text("Assistidos")
+                    .foregroundColor(.white)
+                    .font(.system(size: 24))
+                ScrollView(.horizontal) {
+                    LazyHStack {
+                        ForEach(1...3, id: \.self) { item in
+                            Image("Movie_Clap_Cell")
+                                .resizable()
+                                .scaledToFit()
+                                .cornerRadius(10)
+                        }
+                    }
+                }
+            }
+            .frame(height: 300)
+            .padding()
+            
+            VStack(alignment: .leading) {
+                Text("Na Fila")
+                    .foregroundColor(.white)
+                    .font(.system(size: 24))
+                ScrollView(.horizontal) {
+                    LazyHStack {
+                        ForEach(1...3, id: \.self) { item in
+                            Image("Movie_Clap_Cell")
+                                .resizable()
+                                .scaledToFit()
+                                .cornerRadius(10)
+                        }
+                    }
+                }
+            }
+            .frame(height: 300)
+            .padding()
+            
         }
-        .padding()
+        .ignoresSafeArea()
+        .background(Color("mainColor"))
     }
 }
 
